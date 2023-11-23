@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <p id="demo"></p>
+    <script>
+      var str =
+        "class x y w h\n9 0.487753 0.714835 0.019353 0.011116\n2 0.330057 0.935442 0.011793 0.010261\n9 0.169489 0.448055 0.017236 0.009406";
+
+      var cells = str.split("\n").map(function (el) {
+        return el.split(/\s+/);
+      });
+      var key = cells.shift();
+      var out = cells.map(function (el) {
+        var obj = {};
+        for (var i = 0, l = el.length; i < l; i++) {
+          obj[key[i]] = isNaN(Number(el[i])) ? el[i] : +el[i];
+        }
+        return obj;
+      });
+      console.log(JSON.stringify(out, null, 2));
+      document.getElementById("demo").innerHTML = JSON.stringify(out, null, 2);
+    </script>
+  </body>
+</html>
